@@ -16,6 +16,12 @@ import {
   Alert, 
   View 
 } from 'react-native';
+import { StackNavigator } from 'react-navigation'
+
+const ReactNativeApp = StackNavigator({
+  Home: { screen: MainScreen },
+  Net: { screen: NetScreen }
+});
 
 const onButtonAlert = () => {
   Alert.alert("Alert !");
@@ -25,14 +31,19 @@ const onButtonToast = () => {
   ToastAndroid.show('Toast !', ToastAndroid.SHORT);
 };
 
-// Main
-class ReactNativeApp extends Component {
+// Main Screen
+class MainScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {text: '', num: ''};
   }
 
+  static navigateOptions = {
+    title: 'Navigation'
+  }
+
   render() {
+    const {navigate} = this.props.navigation;
     let pic = {
       uri: 'http://jsutils.b0.upaiyun.com/upload/image/koala.jpg'
     };
@@ -83,6 +94,11 @@ class ReactNativeApp extends Component {
             style={{flex: 1}}
           />
           <Button
+            onPress={() => navigate('Net')}
+            title="Go To Net"
+            style={{flex: 1}}
+          />
+          <Button
             onPress={onButtonToast}
             title="Toast"
             style={{flex: 1}}
@@ -98,6 +114,19 @@ class ReactNativeApp extends Component {
           <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
           <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
         </View>
+      </View>
+    );
+  }
+}
+
+// Net Screen
+class NetScreen extends Component {
+  render() {
+    return (
+      <View style={{
+        flex: 1
+      }}>
+      <Text style={style.blue}>Net Screen</Text>
       </View>
     );
   }
