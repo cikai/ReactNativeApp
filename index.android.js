@@ -3,9 +3,8 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-
 import React, { Component } from 'react';
-import { 
+import {
   AppRegistry, 
   StyleSheet, 
   Text, 
@@ -16,12 +15,7 @@ import {
   Alert, 
   View 
 } from 'react-native';
-import { StackNavigator } from 'react-navigation'
-
-const ReactNativeApp = StackNavigator({
-  Home: { screen: MainScreen },
-  Net: { screen: NetScreen }
-});
+import { StackNavigator } from 'react-navigation';
 
 const onButtonAlert = () => {
   Alert.alert("Alert !");
@@ -31,15 +25,11 @@ const onButtonToast = () => {
   ToastAndroid.show('Toast !', ToastAndroid.SHORT);
 };
 
-// Main Screen
-class MainScreen extends Component {
+// Welcome Screen
+class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {text: '', num: ''};
-  }
-
-  static navigateOptions = {
-    title: 'Navigation'
   }
 
   render() {
@@ -94,8 +84,8 @@ class MainScreen extends Component {
             style={{flex: 1}}
           />
           <Button
-            onPress={() => navigate('Net')}
-            title="Go To Net"
+            onPress={() => navigate('FetchApi')}
+            title="Go To FetchApi"
             style={{flex: 1}}
           />
           <Button
@@ -119,14 +109,33 @@ class MainScreen extends Component {
   }
 }
 
-// Net Screen
-class NetScreen extends Component {
+// FetchApi Screen
+class FetchApi extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {title: '', description: ''};
+  }
+
   render() {
+    let movies = async () => {
+      try {
+        let response = await fetch('https://facebook.github.io/react-native/movies.json');
+        let responseJson = await response.json();
+        return responseJson;
+      } catch(error) {
+        console.error(error);
+      }
+    };
+    movies().then(function(result){
+      result.title = this.setState({title});
+      result.description = this.setState({description});
+    });
     return (
       <View style={{
         flex: 1
       }}>
-      <Text style={style.blue}>Net Screen</Text>
+        <Text style={style.blue}>{this.state.title}</Text>
+        <Text style={style.blue}>{this.state.description}</Text>
       </View>
     );
   }
@@ -145,6 +154,11 @@ const style = StyleSheet.create({
     color: "blue",
     fontSize: 50
   }
+});
+
+const ReactNativeApp = StackNavigator({
+  Welcome: { screen: Welcome },
+  FetchApi: { screen: FetchApi }
 });
 
 AppRegistry.registerComponent('ReactNativeApp', () => ReactNativeApp);
