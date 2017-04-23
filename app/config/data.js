@@ -7,5 +7,8 @@ export const page = [
   },
   {
     "name": "Tabs"
+  },
+  {
+    "name": "MyApp"
   }
 ];

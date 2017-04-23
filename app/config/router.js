@@ -7,6 +7,7 @@ import Layout from '../screens/BasicLayout';
 import ListView from '../screens/ListView';
 import ScrollView from '../screens/ScrollView';
 import TouchableDemo from '../screens/TouchableDemo';
+import MyApp from '../screens/MyApp';
 
 export const Tabs = TabNavigator({
   ListView: {
@@ -44,6 +45,9 @@ export const Root = StackNavigator({
   },
   TouchableDemo: {
     screen: TouchableDemo,
+  },
+  MyApp: {
+    screen: MyApp,
   }
 }, {
   mode: 'modal',
