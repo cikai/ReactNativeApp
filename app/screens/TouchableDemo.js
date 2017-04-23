@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     Text,
     Alert,
     View,
@@ -10,7 +9,9 @@ import {
     TouchableWithoutFeedback
 } from 'react-native';
 
-export default class TouchDemo extends Component {
+import Button from '../components/Button';
+
+export default class TouchableDemo extends Component {
   _onPressButton() {
     Alert.alert("You press the button !");
   }
@@ -43,12 +44,15 @@ export default class TouchDemo extends Component {
           }}>TouchableOpacity</Text>
         </TouchableOpacity>
         <TouchableWithoutFeedback onPress={this._onPressButton} onLongPress={this._onLongPress}>
-          <Text style={{
+          <View>
+            <Text style={{
             fontSize: 25,
             color: 'blue',
             paddingTop: 20
           }}>TouchableWithoutFeedback</Text>
+          </View>
         </TouchableWithoutFeedback>
+        <Button />
       </View>
     );
   }

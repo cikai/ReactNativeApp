@@ -7,10 +7,6 @@ import {
   AppRegistry
 } from 'react-native';
 
-import Home from './app/home';
-import FetchApi from './app/fetchapi';
-import ListView from './app/listview';
-import ScrollView from './app/scrollview';
-import TouchDemo from './app/touch'
+import App from './app/index';
 
-AppRegistry.registerComponent('ReactNativeApp', () => TouchDemo);
+AppRegistry.registerComponent('ReactNativeApp', () => App);
