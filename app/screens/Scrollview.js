@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import{ 
-    AppRegistry, 
+import{
     ScrollView, 
     Image, 
-    Text, 
-    View 
+    Text,
 } from 'react-native'
 
 export default class ScrollViewDemo extends Component {

@@ -4,10 +4,11 @@ import { Icon } from 'react-native-elements';
 
 import Home from '../screens/Home';
 import Layout from '../screens/BasicLayout';
-import ListView from '../screens/ListView';
-import ScrollView from '../screens/ScrollView';
+import ListView from '../screens/Listview';
+import ScrollView from '../screens/Scrollview';
 import TouchableDemo from '../screens/TouchableDemo';
 import MyApp from '../screens/MyApp';
+import ParseXML from '../screens/ParseXML';
 
 export const Tabs = TabNavigator({
   ListView: {
@@ -48,6 +49,9 @@ export const Root = StackNavigator({
   },
   MyApp: {
     screen: MyApp,
+  },
+  ParseXML: {
+    screen: ParseXML,
   }
 }, {
   mode: 'modal',

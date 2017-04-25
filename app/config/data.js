@@ -10,5 +10,8 @@ export const page = [
   },
   {
     "name": "MyApp"
+  },
+  {
+    "name": "ParseXML"
   }
 ];
