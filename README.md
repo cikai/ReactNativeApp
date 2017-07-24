@@ -1,5 +1,7 @@
 ## React Native App
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/cikai/ReactNativeApp.svg)](https://greenkeeper.io/)
+
 To run your app on iOS:
 
 ```bash
